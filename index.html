@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+</head>
+
+<script>
+  AFRAME.registerComponent('music-1-handler', {
+    init: function () {
+      let playing = false;
+      let audio = document.querySelector("#music1");
+      this.el.addEventListener('click', () => {
+        if (!playing) {
+          audio.play();
+        } else {
+          audio.pause();
+          audio.currentTime = 0;
+        }
+        playing = !playing;
+      });
+    }
+  })
+
+  AFRAME.registerComponent('music-2-handler', {
+    init: function () {
+      let playing = false;
+      let audio = document.querySelector("#music2");
+      this.el.addEventListener('click', () => {
+        if (!playing) {
+          audio.play();
+        } else {
+          audio.pause();
+          audio.currentTime = 0;
+        }
+        playing = !playing;
+      });
+    }
+  })
+
+  AFRAME.registerComponent('music-3-handler', {
+    init: function () {
+      let playing = false;
+      let audio = document.querySelector("#music3");
+      this.el.addEventListener('click', () => {
+        if (!playing) {
+          audio.play();
+        } else {
+          audio.pause();
+          audio.currentTime = 0;
+        }
+        playing = !playing;
+      });
+    }
+  })
+
+  AFRAME.registerComponent('music-4-handler', {
+    init: function () {
+      let playing = false;
+      let audio = document.querySelector("#music4");
+      this.el.addEventListener('click', () => {
+        if (!playing) {
+          audio.play();
+        } else {
+          audio.pause();
+          audio.currentTime = 0;
+        }
+        playing = !playing;
+      });
+    }
+  })
+</script>
+
+<body>
+  <a-scene renderer="antialias: true;
+                        colorManagement: true;
+                        sortObjects: true;
+                        physicallyCorrectLights: true;">
+
+    <!-- Assets -->
+    <a-assets>
+      <!-- Images -->
+      <img id="wall" src="assets/images/wall.jpg"></img>
+      <img id="floor" src="assets/images/floor.png"></img>
+      <img id="ceiling" src="assets/images/ceiling.jpg"></img>
+      <!-- Audios -->
+      <audio id="music1" src="assets/audios/music1.mp3" preload="auto"></audio>
+      <audio id="music2" src="assets/audios/music2.mp3" preload="auto"></audio>
+      <audio id="music3" src="assets/audios/music3.mp3" preload="auto"></audio>
+      <audio id="music4" src="assets/audios/music4.mp3" preload="auto"></audio>
+      <!-- Models -->
+      <a-asset-item id="sculpture-1-obj" src="assets/models/sculpture1.obj"></a-asset-item>
+    </a-assets>
+
+    <!-- lights -->
+    <a-entity light="type:directional; castShadow:true; intensity:2;" position="1 1 1"></a-entity>
+    <a-entity light="type:directional; castShadow:true; intensity:2;" position="-1 -1 -1"></a-entity>
+    <a-entity light="type:directional; castShadow:true; intensity:2;" position="4 0 0"></a-entity>
+
+    <a-entity camera look-controls wasd-controls position="0 1.6 0">
+      <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -1"
+        geometry="primitive: ring; radiusInner: 0.005; radiusOuter: 0.01" material="color: white; shader: flat"
+        cursor-listener>
+      </a-entity>
+    </a-entity>
+
+    <!-- right wall-->
+    <a-plane src="#wall" position="15 2.5 0" rotation="0 -90 0" width="10" height="5"></a-plane>
+    <!-- left wall-->
+    <a-plane src="#wall" position="-5 2.5 0" rotation="0 90 0" width="10" height="5"></a-plane>
+    <!-- front wall-->
+    <a-plane src="#wall" position="0 2.5 -5" rotation="0 0 0" width="30" height="5"></a-plane>
+    <!-- back wall-->
+    <a-plane src="#wall" position="0 2.5 5" rotation="0 180 0" width="30" height="5"></a-plane>
+    <!-- ceiling-->
+    <a-plane position="0 4 0" rotation="90 0 0" width="30" height="10"></a-plane>
+
+    <!-- floor-->
+    <a-plane src="#floor" repeat="4 4" position="0 0 0" rotation="-90 0 0" width="30" height="10"></a-plane>
+
+    <!-- ceiling -->
+    <a-plane src="#ceiling" repeat="30 15" position="0 3.9 0" width="30" height="10" rotation="90 0 0"></a-plane>
+
+    <!-- front wall images -->
+    <a-entity geometry="primitive: box; width: 2; height: 1; depth: 0.1;"
+      material="src: url(https://picsum.photos/800/400.jpg)"
+      music-1-handler
+      position="-2 0.9 -4.9"></a-entity>
+    <a-entity geometry="primitive: box; width: 2; height: 1; depth: 0.1;"
+      material="src: url(https://picsum.photos/800/401.jpg)"
+      music-1-handler
+      position="-2 2 -4.9"></a-entity>
+    <a-entity geometry="primitive: box; width: 2; height: 1; depth: 0.1;"
+      material="src: url(https://picsum.photos/800/402.jpg)"
+      music-1-handler
+      position="-2 3.1 -4.9"></a-entity>
+
+    <a-entity geometry="primitive: box; width: 1; height: 3.2; depth: 0.1;"
+      material="src: url(https://picsum.photos/300/900.jpg)"
+      music-1-handler
+      position="0 2 -4.9"></a-entity>
+
+    <a-entity geometry="primitive: box; width: 5.69; height: 3.2; depth: 0.1;"
+      material="src: url(https://picsum.photos/1600/900.jpg)"
+      music-1-handler
+      position="4 2 -4.9"></a-entity>
+    <a-entity geometry="primitive: box; width: 5.69; height: 3.2; depth: 0.1;"
+      material="src: url(https://picsum.photos/1600/901.jpg)"
+      music-1-handler
+      position="11 2 -4.9"></a-entity>
+
+    <!-- left wall images -->
+    <a-entity geometry="primitive: box; width: 4; height: 3; depth: 0.1;"
+      material="src: url(https://picsum.photos/1200/900.jpg)"
+      music-2-handler
+      rotation="0 90 0"
+      position="-4.9 2 2"></a-entity>
+    <a-entity geometry="primitive: box; width: 3.5; height: 1.5; depth: 0.1;"
+      material="src: url(https://picsum.photos/2100/901.jpg)"
+      music-2-handler
+      rotation="0 90 0"
+      position="-4.9 2.75 -2.5"></a-entity>
+    <a-entity geometry="primitive: box; width: 3.5; height: 1.5; depth: 0.1;"
+      material="src: url(https://picsum.photos/2100/902.jpg)"
+      music-2-handler
+      rotation="0 90 0"
+      position="-4.9 1.25 -2.5"></a-entity>
+
+    <!-- right wall images -->
+    <a-entity geometry="primitive: box; width: 3; height: 3; depth: 0.1;"
+      material="src: url(https://picsum.photos/600.jpg)"
+      music-3-handler
+      rotation="0 -90 0"
+      position="14.9 2 -2.5"></a-entity>
+    <a-entity geometry="primitive: box; width: 3; height: 3; depth: 0.1;"
+      material="src: url(https://picsum.photos/601.jpg)"
+      music-3-handler
+      rotation="0 -90 0"
+      position="14.9 2 2.5"></a-entity>
+
+    <!-- back wall images -->
+    <a-entity geometry="primitive: box; width: 3.5; height: 3.5; depth: 0.1;"
+      material="src: url(https://picsum.photos/1000.jpg)"
+      music-4-handler
+      position="-2 2 4.9"></a-entity>
+    <a-entity geometry="primitive: box; width: 8.17; height: 3.5; depth: 0.1;"
+      material="src: url(https://picsum.photos/2100/903.jpg)"
+      music-4-handler
+      position="5 2 4.9"></a-entity>
+    <a-entity geometry="primitive: box; width: 3.5; height: 3.5; depth: 0.1;"
+      material="src: url(https://picsum.photos/1001.jpg)"
+      music-4-handler
+      position="12 2 4.9"></a-entity>
+
+    <!-- sculptures -->
+    <a-obj-model src="#sculpture-1-obj" position="4 0 0" scale="0.01 0.01 0.01" rotation="0 0 0"></a-obj-model>
+  </a-scene>
+
+</body>
+
+</html>
